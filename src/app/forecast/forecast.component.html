@@ -1,4 +1,4 @@
-<div *ngIf="(currrentWeatherObseervable | async)" as weather>
+<div *ngIf="(currentWeatherObservable | async) as weather">
   <mat-card>
     <mat-card-header>
       <img src="//openweathermap.org/img/w/{{weather.weather[0].icon}}.png" [alt]="weather.weather[0].description">

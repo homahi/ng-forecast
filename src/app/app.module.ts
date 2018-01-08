@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { OpenWeatherMapService } from './services/open-weather-map.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
@@ -39,7 +39,7 @@ import { ForecastComponent } from './forecast/forecast.component';
     MatCardModule,
     MatInputModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule
   ],

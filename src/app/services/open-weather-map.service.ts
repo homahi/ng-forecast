@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {OpenWeatherMap} from '../shared/models/open-weather-map';
+import { OpenWeatherMap } from '../shared/models/open-weather-map';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
@@ -28,7 +28,7 @@ export class OpenWeatherMapService {
     Object.keys(data).forEach((key) => {
       params = params.set(key, data[key]);
     });
-    return this.http.get<OpenWeatherMap.Current>(`$(this.API)/weather`, { params });
+    return this.http.get<OpenWeatherMap.Current>(`${ this.API }/weather`, { params });
   }
 
   /**
