@@ -1,4 +1,8 @@
+import {
+  trigger, transition, useAnimation, stagger,query
+} from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { slideFadeIn } from '../app.animations';
 import { OpenWeatherMap } from '../shared/models/open-weather-map';
 import { OpenWeatherMapService } from '../services/open-weather-map.service';
 import { ActivatedRoute } from '@angular/router';
@@ -8,7 +12,18 @@ import 'rxjs/add/operator/switchMap';
 @Component({
   selector: 'app-forecast',
   templateUrl: './forecast.component.html',
-  styleUrls: ['./forecast.component.scss']
+  styleUrls: ['./forecast.component.scss'],
+  animations: [
+    trigger('slideFade', [
+      transition(':enter', [
+        query('mat-list-item', [
+          stagger(100, [
+            useAnimation(slideFadeIn)
+          ])
+        ])
+      ])
+    ])
+  ]
 })
 export class ForecastComponent implements OnInit {
   public currentWeatherObservable: Observable<OpenWeatherMap.Current>;

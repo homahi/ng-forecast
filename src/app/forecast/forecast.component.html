@@ -35,7 +35,7 @@
   </mat-card-content>
 </div>
 <div *ngIf="(forecastObservable | async) as forecast">
-  <mat-list>
+  <mat-list [@slideFade]="forecast.list">
     <mat-list-item *ngFor="let weather of forecast.list" class="mat-elevation-z1">
       <img src="//openweathermap.org/img/w/{{weather.weather[0].icon}}.png" alt="" matListAvatar>
       <h4 matLine>{{weather.dt | unixTimeDate: 'yyyyMMdd'}}</h4>
