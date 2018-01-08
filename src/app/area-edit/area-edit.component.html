@@ -1,3 +1,24 @@
-<p>
-  area-edit works!
-</p>
+<form (submit)="save($event)">
+  <mat-list>
+    <mat-list-item @slideFade  *ngFor="let area of areas; let i = index">
+      <table class="example-full-width" collspacing="0">
+        <tr>
+          <td>
+            <mat-form-field>
+              <input type="text" placeholder="表示名" matInput [(ngModel)]="area.label" [name]="'label-'+ i"></mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <input type="text" matInput placeholder="都市名" [(ngModel)]="area.city" [name]="'city-'+i">
+            </mat-form-field>
+          </td>
+          <td>
+          <button type="button" mat-button (click)="delete(area, i)">削除</button></td>
+        </tr>
+      </table>
+    </mat-list-item>
+  </mat-list>
+
+  <a mat-raised-button (click)="addArea()">追加</a>
+  <button mat-raised-button type="submit">保存</button>
+</form>
