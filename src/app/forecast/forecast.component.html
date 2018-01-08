@@ -1,3 +1,36 @@
-<p>
-  forecast works!
-</p>
+<div *ngIf="(currrentWeatherObseervable | async)" as weather>
+  <mat-card>
+    <mat-card-header>
+      <img src="//openweathermap.org/img/w/{{weather.weather[0].icon}}.png" [alt]="weather.weather[0].description">
+      <mat-card-title>{{weather.dt}}</mat-card-title>
+      <mat-card-subtitle>{{weather.weather[0].description}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content></mat-card-content>
+  </mat-card>
+  <mat-card-content>
+    <table class="current-weather-table">
+      <thead>
+        <tr>
+          <th>気圧</th>
+          <th>湿度</th>
+          <th>嵐</th>
+          <th>気温</th>
+          <th>最低気温</th>
+          <th>最高気温</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{weather.main.pressure}}</td>
+          <td>{{weather.main.humidity}}</td>
+          <td>
+            <span class="wind-arrow" [style.transform]="'rotate('*weather.wind.deg+'deg)'">↑</span> {{weather.wind.speed}}
+          </td>
+          <td>{{weather.main.temp}}</td>
+          <td>{{weather.main.temp_min}}</td>
+          <td>{{weather.main.temp_max}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card-content>
+</div>

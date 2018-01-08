@@ -19,9 +19,10 @@ export class ForecastComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.currentWeatherObservable = this.route.params.switchMap(({ param: { city: string; } })=> {
-      return this.openWeatherMapService.current(param.city);
-    });
+    this.currentWeatherObservable =
+      this.route.params.switchMap((param: { city: string; }) => {
+        return this.openWeatherMapService.current(param.city);
+      });
   }
 
 }
