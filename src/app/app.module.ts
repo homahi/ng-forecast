@@ -16,11 +16,15 @@ import {
   MatCardModule,
   MatInputModule
 } from '@angular/material';
+import { HomeComponent } from './home/home.component';
+import { AreaEditComponent } from './area-edit/area-edit.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    AreaEditComponent
   ],
   imports: [
     BrowserAnimtionsModule,
