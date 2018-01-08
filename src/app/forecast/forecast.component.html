@@ -34,3 +34,21 @@
     </table>
   </mat-card-content>
 </div>
+<div *ngIf="(forecastObservable | async) as forecast">
+  <mat-list>
+    <mat-list-item *ngFor="let weather of forecast.list" class="mat-elevation-z1">
+      <img src="//openweathermap.org/img/w/{{weather.weather[0].icon}}.png" alt="" matListAvatar>
+      <h4 matLine>{{weather.dt | unixTimeDate: 'yyyyMMdd'}}</h4>
+      <p matLine>
+        <span>{{weather.weather[0].description}}</span></p>
+      <p matLine>
+        <span>気温: {{weather.temp.day}}</span>
+        <span>最高気温: {{weather.temp.max}}</span>
+        <span>最低気温: {{weather.temp.min}}</span>
+        <span>湿度: {{weather.humidity}}</span>
+        <span>風: <span class="wind-arrow" [style.transfrom]="'rotate('+weather.deg+'deg)'">↑</span>{{weather.speed}}</span>
+      </p>
+    </mat-list-item>
+  </mat-list>
+
+</div>
