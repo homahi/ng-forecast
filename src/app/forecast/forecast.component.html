@@ -2,7 +2,7 @@
   <mat-card>
     <mat-card-header>
       <img src="//openweathermap.org/img/w/{{weather.weather[0].icon}}.png" [alt]="weather.weather[0].description">
-      <mat-card-title>{{weather.dt}}</mat-card-title>
+      <mat-card-title>{{weather.dt | unixTimeDate : 'yyyyMMdd'}}</mat-card-title>
       <mat-card-subtitle>{{weather.weather[0].description}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content></mat-card-content>
@@ -24,7 +24,7 @@
           <td>{{weather.main.pressure}}</td>
           <td>{{weather.main.humidity}}</td>
           <td>
-            <span class="wind-arrow" [style.transform]="'rotate('*weather.wind.deg+'deg)'">↑</span> {{weather.wind.speed}}
+            <span class="wind-arrow" [style.transform]="'rotate('+weather.wind.deg+'deg)'">↑</span> {{weather.wind.speed}}
           </td>
           <td>{{weather.main.temp}}</td>
           <td>{{weather.main.temp_min}}</td>
