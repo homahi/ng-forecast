@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { LoadingInterceptor } from './loading-interceptor';
+import { LoadingService } from './services/loading.service';
 import { OpenWeatherMapService } from './services/open-weather-map.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { NgModule,LOCALE_ID } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -45,7 +47,11 @@ import { UnixTimeDatePipe } from './pipes/unix-time-date.pipe';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [{provide: LOCALE_ID, useValue: 'ja-JP'},OpenWeatherMapService],
+  providers: [LoadingService, OpenWeatherMapService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoadingInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

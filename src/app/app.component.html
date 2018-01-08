@@ -14,3 +14,6 @@
     <router-outlet></router-outlet>
   </div>
 </mat-sidenav-container>
+<div class="loading-bar" [hidden]="!(loadingObservable | async)">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
