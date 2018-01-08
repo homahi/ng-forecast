@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {AreaService} from './services/area.service';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { AreaService } from './services/area.service';
 import { LoadingInterceptor } from './loading-interceptor';
 import { LoadingService } from './services/loading.service';
 import { OpenWeatherMapService } from './services/open-weather-map.service';
@@ -46,9 +47,10 @@ import { UnixTimeDatePipe } from './pipes/unix-time-date.pipe';
     FormsModule,
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ChartsModule
   ],
-  providers: [LoadingService, OpenWeatherMapService,AreaService, {
+  providers: [LoadingService, OpenWeatherMapService, AreaService, {
     provide: HTTP_INTERCEPTORS,
     useClass: LoadingInterceptor,
     multi: true
