@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { LoadingService } from './services/loading.service';
 import { AreaService } from './services/area.service';
-import { DebugElement } from '@angular/core';
+import { NO_ERRORS_SCHEMA, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
@@ -25,7 +25,8 @@ describe('AppComponent', () => {
       providers: [
         { provide: LoadingService, useValue: {} },
         { provide: AreaService, useValue: { getList: () => { } } }
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
 
